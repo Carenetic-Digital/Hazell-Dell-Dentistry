@@ -1,7 +1,7 @@
 {
-  "name": "[Business Name]",
-  "short_name": "[Short Name]",
-  "description": "[Business description]",
+  "name": "Hazel Dell Dentistry",
+  "short_name": "Hazel Dell Dentistry",
+  "description": "Evidence-based general, cosmetic, and emergency dental care in Carmel, IN.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

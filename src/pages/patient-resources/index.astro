@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import StructuredData from '../../components/StructuredData.astro';
+
+const breadcrumbData = {
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).href },
+    { '@type': 'ListItem', position: 2, name: 'Patient Resources', item: new URL('/patient-resources/', Astro.site).href },
+  ],
+};
+
+const faqs = [
+  {
+    question: 'What should I bring to my first visit?',
+    answer:
+      'Please bring a photo ID, your insurance information (if applicable), and a list of any current medications. If you have recent X-rays from a previous dentist, having those sent ahead can help us get you seen more efficiently.',
+  },
+  {
+    question: 'How often should I schedule a cleaning and exam?',
+    answer:
+      'Most patients benefit from a professional cleaning and exam twice a year, though your dentist may recommend a different schedule based on your individual oral health needs.',
+  },
+  {
+    question: 'Do you see patients of all ages?',
+    answer:
+      'Yes — Hazel Dell Dentistry is a full-service, neighborhood dental practice welcoming patients of all ages.',
+  },
+  {
+    question: 'What if I have a dental emergency?',
+    answer:
+      'Existing patients experiencing a dental emergency should contact our office directly and we will get back to you as soon as possible. If we haven’t seen you in a while, a comprehensive exam and imaging may be needed prior to treatment.',
+  },
+];
+
+const faqData = {
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title="Patient Resources | Hazel Dell Dentistry | Carmel, IN"
+  description="New patient information, insurance questions, and frequently asked questions for Hazel Dell Dentistry patients in Carmel, IN."
+>
+  <StructuredData type="BreadcrumbList" data={breadcrumbData} />
+  <StructuredData type="FAQPage" data={faqData} />
+
+  <Header />
+
+  <main id="main-content">
+    <!-- Breadcrumb + Title -->
+    <section class="bg-neutral-50 py-12 md:py-16 border-b border-neutral-200">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <nav aria-label="Breadcrumb" class="mb-4">
+          <ol class="flex flex-wrap items-center gap-2 text-sm text-neutral-600">
+            <li><a href="/" class="hover:text-neutral-900 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li class="text-neutral-900" aria-current="page">Patient Resources</li>
+          </ol>
+        </nav>
+        <h1 class="text-neutral-900 mb-4">Patient Resources</h1>
+        <p class="text-neutral-600 max-w-2xl">
+          Everything you need for a comfortable first visit — from what to expect to how we handle
+          insurance and forms.
+        </p>
+      </div>
+    </section>
+
+    <!-- New Patients -->
+    <section class="bg-neutral-50 py-16 md:py-24">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-[minmax(0,280px)_1fr] gap-8 lg:gap-16">
+        <h2 class="text-neutral-900">New Patients</h2>
+        <div class="space-y-4">
+          <p class="text-neutral-600">
+            Getting started with better dental health is simple. A typical first visit includes a
+            review of your dental and medical history, a comprehensive exam, and any imaging needed
+            to give Dr. Nikas a full picture of your oral health.
+          </p>
+          <p class="text-neutral-600">
+            Give our office a call at <a href="tel:+13177061111" class="underline underline-offset-4 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm">317-706-1111</a> and
+            we'll help you schedule a time that works and answer any questions before you arrive.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Patient Forms -->
+    <section class="bg-panel py-16 md:py-24" aria-labelledby="forms-heading">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-[minmax(0,280px)_1fr] gap-8 lg:gap-16">
+        <h2 id="forms-heading" class="text-panel-foreground">Patient Forms</h2>
+        <p class="text-panel-foreground">
+          New patient paperwork will be ready for you at your first visit. If you'd like to complete
+          it ahead of time, contact our office and we'll be happy to send it over.
+        </p>
+      </div>
+    </section>
+
+    <!-- Insurance -->
+    <section class="bg-neutral-50 py-16 md:py-24" aria-labelledby="insurance-heading">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-[minmax(0,280px)_1fr] gap-8 lg:gap-16">
+        <h2 id="insurance-heading" class="text-neutral-900">Insurance</h2>
+        <p class="text-neutral-600">
+          Have questions about your coverage? Contact our office at <a href="tel:+13177061111" class="underline underline-offset-4 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm">317-706-1111</a> and
+          we'll be glad to help you understand your benefits and payment options before your visit.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="bg-panel py-16 md:py-24" aria-labelledby="faq-heading">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-[minmax(0,280px)_1fr] gap-8 lg:gap-16">
+        <h2 id="faq-heading" class="text-panel-foreground">FAQs</h2>
+        <dl class="space-y-8">
+          {faqs.map((faq) => (
+            <div>
+              <dt class="text-panel-foreground font-display font-bold mb-2">{faq.question}</dt>
+              <dd class="text-panel-foreground">{faq.answer}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-primary text-primary-foreground py-16 md:py-24" aria-labelledby="cta-heading">
+      <div class="max-w-4xl mx-auto px-4 md:px-8 text-center">
+        <h2 id="cta-heading" class="text-primary-foreground mb-4">Still Have Questions?</h2>
+        <p class="text-primary-foreground max-w-2xl mx-auto mb-8">
+          Our team is happy to help before your visit — reach out any time.
+        </p>
+        <a
+          href="/contact-us/"
+          class="inline-flex items-center justify-center px-7 py-3.5 bg-neutral-50 text-neutral-900 border border-neutral-50 hover:bg-transparent hover:text-primary-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-50"
+        >
+          Contact Us
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

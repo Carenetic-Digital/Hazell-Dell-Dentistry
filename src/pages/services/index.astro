@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import { services } from '../../data/services';
+
+const breadcrumbData = {
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).href },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: new URL('/services/', Astro.site).href },
+  ],
+};
+---
+
+<BaseLayout
+  title="Dental Services | Hazel Dell Dentistry | Carmel, IN"
+  description="Explore the full range of general, cosmetic, and restorative dental services at Hazel Dell Dentistry in Carmel, IN — backed by the latest dental technology."
+>
+  <StructuredData type="BreadcrumbList" data={breadcrumbData} />
+
+  <Header />
+
+  <main id="main-content">
+    <!-- Breadcrumb + Title -->
+    <section class="bg-neutral-50 py-12 md:py-16 border-b border-neutral-200">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <nav aria-label="Breadcrumb" class="mb-4">
+          <ol class="flex flex-wrap items-center gap-2 text-sm text-neutral-600">
+            <li><a href="/" class="hover:text-neutral-900 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li class="text-neutral-900" aria-current="page">Services</li>
+          </ol>
+        </nav>
+        <h1 class="text-neutral-900 mb-4">Our Services</h1>
+        <p class="text-neutral-600 max-w-2xl">
+          A full range of general, cosmetic, and restorative treatments, backed by the latest
+          advancements in dental technology.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services List -->
+    <section class="bg-neutral-50 py-16 md:py-24">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {services.map((service) => (
+            <li class="border border-neutral-200 p-6 flex flex-col">
+              <h2 class="text-lg text-neutral-900 mb-3">
+                <a
+                  href={`/services/${service.slug}/`}
+                  class="hover:text-neutral-600 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
+                >
+                  {service.name}
+                </a>
+              </h2>
+              <p class="text-neutral-600 text-base mb-6 grow">{service.shortDescription}</p>
+              <a
+                href={`/services/${service.slug}/`}
+                class="text-sm font-bold text-neutral-900 hover:text-neutral-600 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
+              >
+                Learn More &rarr;
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-primary text-primary-foreground py-16 md:py-24" aria-labelledby="cta-heading">
+      <div class="max-w-4xl mx-auto px-4 md:px-8 text-center">
+        <h2 id="cta-heading" class="text-primary-foreground mb-4">Ready to Schedule Your Visit?</h2>
+        <p class="text-primary-foreground max-w-2xl mx-auto mb-8">
+          Reach out to our Carmel, IN office to request an appointment or ask about any of our services.
+        </p>
+        <a
+          href="/contact-us/"
+          class="inline-flex items-center justify-center px-7 py-3.5 bg-neutral-50 text-neutral-900 border border-neutral-50 hover:bg-transparent hover:text-primary-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-50"
+        >
+          Request Appointment
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

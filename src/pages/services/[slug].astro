@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import { services, getService, getRelatedServices } from '../../data/services';
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const related = getRelatedServices(service);
+
+const serviceData = {
+  name: service.name,
+  description: service.metaDescription,
+  areaServed: {
+    '@type': 'City',
+    name: 'Carmel, IN',
+  },
+  provider: {
+    '@type': 'Dentist',
+    name: 'Hazel Dell Dentistry',
+    telephone: '+1-317-706-1111',
+  },
+};
+
+const breadcrumbData = {
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).href },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: new URL('/services/', Astro.site).href },
+    { '@type': 'ListItem', position: 3, name: service.name, item: new URL(Astro.url.pathname, Astro.site).href },
+  ],
+};
+---
+
+<BaseLayout
+  title={`${service.name} | Hazel Dell Dentistry | Carmel, IN`}
+  description={service.metaDescription}
+>
+  <StructuredData type="Service" data={serviceData} />
+  <StructuredData type="BreadcrumbList" data={breadcrumbData} />
+
+  <Header />
+
+  <main id="main-content">
+    <!-- Breadcrumb + Title -->
+    <section class="bg-neutral-50 py-12 md:py-16 border-b border-neutral-200">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <nav aria-label="Breadcrumb" class="mb-4">
+          <ol class="flex flex-wrap items-center gap-2 text-sm text-neutral-600">
+            <li><a href="/" class="hover:text-neutral-900 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li><a href="/services/" class="hover:text-neutral-900 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm">Services</a></li>
+            <li aria-hidden="true">/</li>
+            <li class="text-neutral-900" aria-current="page">{service.name}</li>
+          </ol>
+        </nav>
+        <h1 class="text-neutral-900">{service.name}</h1>
+      </div>
+    </section>
+
+    <!-- Description -->
+    <section class="bg-neutral-50 py-16 md:py-24">
+      <div class="max-w-4xl mx-auto px-4 md:px-8">
+        <div class="space-y-6">
+          {service.paragraphs.map((paragraph) => (
+            <p class="text-neutral-600">{paragraph}</p>
+          ))}
+        </div>
+        {service.bullets && service.bullets.length > 0 && (
+          <ul class="mt-6 space-y-3 list-disc list-outside pl-5 marker:text-neutral-400">
+            {service.bullets.map((bullet) => (
+              <li class="text-neutral-600">{bullet}</li>
+            ))}
+          </ul>
+        )}
+        <div class="mt-12">
+          <a
+            href="/contact-us/"
+            class="inline-flex items-center justify-center px-7 py-3.5 bg-primary text-primary-foreground border border-primary hover:bg-primary-hover-background hover:text-primary-hover-foreground hover:border-primary-hover-border transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            Request Appointment
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Services -->
+    {related.length > 0 && (
+      <section class="bg-panel py-16 md:py-24" aria-labelledby="related-heading">
+        <div class="max-w-4xl mx-auto px-4 md:px-8">
+          <h2 id="related-heading" class="text-panel-foreground mb-8">Related Services</h2>
+          <ul class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+            {related.map((item) => (
+              <li>
+                <a
+                  href={`/services/${item.slug}/`}
+                  class="flex items-center justify-center text-center h-20 md:h-24 px-2 bg-panel-dark text-panel-dark-foreground hover:bg-neutral-900 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-50"
+                >
+                  <span class="text-base md:text-lg underline underline-offset-4">{item.name}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+  </main>
+
+  <Footer />
+</BaseLayout>

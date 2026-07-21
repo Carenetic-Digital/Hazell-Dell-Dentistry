@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import StructuredData from '../../components/StructuredData.astro';
+
+const breadcrumbData = {
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).href },
+    { '@type': 'ListItem', position: 2, name: 'About', item: new URL('/about/', Astro.site).href },
+  ],
+};
+---
+
+<BaseLayout
+  title="About Us | Hazel Dell Dentistry | Carmel, IN"
+  description="Hazel Dell Dentistry is a full-service neighborhood dental practice in Carmel, IN, providing evidence-based dentistry for patients of all ages."
+>
+  <StructuredData type="BreadcrumbList" data={breadcrumbData} />
+
+  <Header />
+
+  <main id="main-content">
+    <!-- Breadcrumb + Title -->
+    <section class="bg-neutral-50 py-12 md:py-16 border-b border-neutral-200">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <nav aria-label="Breadcrumb" class="mb-4">
+          <ol class="flex flex-wrap items-center gap-2 text-sm text-neutral-600">
+            <li><a href="/" class="hover:text-neutral-900 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li class="text-neutral-900" aria-current="page">About</li>
+          </ol>
+        </nav>
+        <h1 class="text-neutral-900">About Hazel Dell Dentistry</h1>
+      </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="bg-neutral-50 py-16 md:py-24">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-[minmax(0,280px)_1fr] gap-8 lg:gap-16">
+        <h2 class="text-neutral-900">Our Practice</h2>
+        <div class="space-y-6">
+          <p class="text-neutral-600">
+            Hazel Dell Dentistry is a full-service, neighborhood dental practice in Carmel, IN, dedicated
+            to providing evidence-based dentistry for patients of all ages. Our team combines modern
+            technology with a calm, patient-first approach, so every visit feels comfortable and
+            straightforward — from routine cleanings to more advanced restorative and cosmetic care.
+          </p>
+          <p class="text-neutral-600">
+            We believe good oral health is a lifelong partnership, and we take the time to explain
+            treatment options clearly so patients can make informed decisions about their care.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Approach -->
+    <section class="bg-panel py-16 md:py-24" aria-labelledby="approach-heading">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-[minmax(0,280px)_1fr] gap-8 lg:gap-16">
+        <h2 id="approach-heading" class="text-panel-foreground">Our Approach</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8">
+          <div>
+            <h3 class="text-panel-foreground mb-3">Evidence-Based Care</h3>
+            <p class="text-panel-foreground">
+              Every recommendation is grounded in current dental research, not guesswork — so you
+              understand exactly why a treatment is right for you.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-panel-foreground mb-3">Comfortable & Stress-Free</h3>
+            <p class="text-panel-foreground">
+              Dr. Nikas and our team take the time to explain your options clearly, so every visit
+              feels calm and unhurried, for patients of all ages.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-panel-foreground mb-3">Modern Dental Technology</h3>
+            <p class="text-panel-foreground">
+              Digital X-rays, an intraoral camera, and CBCT imaging let us diagnose accurately while
+              keeping your radiation exposure as low as possible.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet the Doctor Teaser -->
+    <section class="bg-neutral-50 py-16 md:py-24" aria-labelledby="doctor-heading">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-[minmax(0,320px)_1fr] gap-10 lg:gap-16 items-center">
+        <div class="flex items-center justify-center bg-panel-dark aspect-square max-w-xs mx-auto lg:mx-0 w-full">
+          <img
+            src="/images/logo/hazel-dell-dentistry-logo-icon-transparent.png"
+            alt=""
+            width="220"
+            height="190"
+            loading="lazy"
+            decoding="async"
+            class="w-2/5 h-auto opacity-90"
+          />
+        </div>
+        <div>
+          <h2 id="doctor-heading" class="text-neutral-900 mb-4">Meet Dr. Nikas</h2>
+          <p class="text-neutral-600 mb-8">
+            Dr. Nikas's mission at Hazel Dell Dentistry is to provide every patient with evidence-based
+            dentistry for a lifetime of optimal oral health.
+          </p>
+          <a
+            href="/meet-dr-nikas/"
+            class="inline-flex items-center justify-center px-7 py-3.5 bg-primary text-primary-foreground border border-primary hover:bg-primary-hover-background hover:text-primary-hover-foreground hover:border-primary-hover-border transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            More About Dr. Nikas
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Office Tour Teaser -->
+    <section class="bg-panel py-16 md:py-24" aria-labelledby="office-heading">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div>
+          <h2 id="office-heading" class="text-panel-foreground mb-4">Tour Our Office</h2>
+          <p class="text-panel-foreground mb-8">
+            Step inside our Carmel, IN office and see the comfortable, modern space where we care for
+            patients of all ages — from a welcoming reception area to fully equipped treatment rooms.
+          </p>
+          <a
+            href="/contact-us/"
+            class="inline-flex items-center justify-center px-7 py-3.5 border border-border-interactive text-panel-foreground hover:bg-neutral-400/20 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            Request Appointment
+          </a>
+        </div>
+        <div class="grid grid-cols-2 gap-3 md:gap-4">
+          <picture class="col-span-2">
+            <source srcset="/images/office/office-treatment-room-chair.avif" type="image/avif" />
+            <source srcset="/images/office/office-treatment-room-chair.webp" type="image/webp" />
+            <img
+              src="/images/office/office-treatment-room-chair.jpg"
+              alt="Dental treatment chair in a fully equipped operatory"
+              width="1600"
+              height="1068"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-56 md:h-64 object-cover"
+            />
+          </picture>
+          <picture>
+            <source srcset="/images/office/office-sterilization-room.avif" type="image/avif" />
+            <source srcset="/images/office/office-sterilization-room.webp" type="image/webp" />
+            <img
+              src="/images/office/office-sterilization-room.jpg"
+              alt="Sterilization room at Hazel Dell Dentistry"
+              width="1600"
+              height="1068"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-40 md:h-48 object-cover"
+            />
+          </picture>
+          <picture>
+            <source srcset="/images/office/office-treatment-room-tv.avif" type="image/avif" />
+            <source srcset="/images/office/office-treatment-room-tv.webp" type="image/webp" />
+            <img
+              src="/images/office/office-treatment-room-tv.jpg"
+              alt="Treatment room with overhead TV for patient comfort"
+              width="1600"
+              height="1068"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-40 md:h-48 object-cover"
+            />
+          </picture>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

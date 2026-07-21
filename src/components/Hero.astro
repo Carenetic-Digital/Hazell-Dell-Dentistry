@@ -1,0 +1,51 @@
+---
+const categories = [
+  { label: 'General Dentistry', tone: 'dark' },
+  { label: 'Cosmetic Dentistry', tone: 'light' },
+  { label: 'Emergency Dental Care', tone: 'dark' },
+];
+---
+
+<section class="bg-neutral-50">
+  <div class="max-w-5xl mx-auto px-4 md:px-8 pt-16 md:pt-24 pb-12 md:pb-16 text-center">
+    <p class="text-sm uppercase tracking-wide text-neutral-600 mb-4">Carmel, Indiana</p>
+    <h1 class="text-neutral-900 mb-6">Beautiful Smiles</h1>
+    <p class="text-lg text-neutral-600 max-w-2xl mx-auto mb-10">
+      We are focused on the needs of patients of all ages and strive to make every visit with us as
+      comfortable and stress-free as possible. With a wide range of treatments and the latest
+      advancements in dental technology, we can show you everything we can do to improve your oral
+      health.
+    </p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a
+        href="/contact-us/"
+        class="inline-flex items-center justify-center px-7 py-3.5 bg-primary text-primary-foreground border border-primary hover:bg-primary-hover-background hover:text-primary-hover-foreground hover:border-primary-hover-border transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      >
+        Request Appointment
+      </a>
+      <a
+        href="tel:+13177061111"
+        class="inline-flex items-center justify-center px-7 py-3.5 border border-border-interactive text-neutral-900 hover:bg-neutral-100 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      >
+        Call: 317-706-1111
+      </a>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3">
+    {categories.map((cat) => (
+      <div
+        class:list={[
+          'flex items-center justify-center text-center py-10 md:py-14 px-6',
+          cat.tone === 'dark'
+            ? 'bg-panel-dark text-panel-dark-foreground'
+            : 'bg-panel text-panel-foreground',
+        ]}
+      >
+        <p class="text-lg md:text-xl uppercase tracking-wide underline underline-offset-4">
+          {cat.label}
+        </p>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import StructuredData from '../../components/StructuredData.astro';
+
+const breadcrumbData = {
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).href },
+    { '@type': 'ListItem', position: 2, name: 'Meet Dr. Nikas', item: new URL('/meet-dr-nikas/', Astro.site).href },
+  ],
+};
+
+const personData = {
+  name: 'Dr. Suzette Nikas',
+  jobTitle: 'Dentist',
+  worksFor: {
+    '@type': 'Dentist',
+    name: 'Hazel Dell Dentistry',
+  },
+};
+---
+
+<BaseLayout
+  title="Meet Dr. Suzette Nikas | Hazel Dell Dentistry | Carmel, IN"
+  description="Meet Dr. Suzette Nikas of Hazel Dell Dentistry in Carmel, IN — dedicated to evidence-based dentistry for a lifetime of optimal oral health."
+>
+  <StructuredData type="BreadcrumbList" data={breadcrumbData} />
+  <StructuredData type="Person" data={personData} />
+
+  <Header />
+
+  <main id="main-content">
+    <!-- Breadcrumb + Title -->
+    <section class="bg-neutral-50 py-12 md:py-16 border-b border-neutral-200">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <nav aria-label="Breadcrumb" class="mb-4">
+          <ol class="flex flex-wrap items-center gap-2 text-sm text-neutral-600">
+            <li><a href="/" class="hover:text-neutral-900 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li class="text-neutral-900" aria-current="page">Meet Dr. Nikas</li>
+          </ol>
+        </nav>
+        <h1 class="text-neutral-900">Meet Dr. Suzette Nikas</h1>
+      </div>
+    </section>
+
+    <!-- Bio -->
+    <section class="bg-neutral-50 py-16 md:py-24">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-[minmax(0,320px)_1fr] gap-10 lg:gap-16 items-start">
+        <div class="flex items-center justify-center bg-panel-dark aspect-square max-w-xs mx-auto lg:mx-0 w-full">
+          <img
+            src="/images/logo/hazel-dell-dentistry-logo-icon-transparent.png"
+            alt=""
+            width="220"
+            height="190"
+            loading="lazy"
+            decoding="async"
+            class="w-2/5 h-auto opacity-90"
+          />
+        </div>
+        <div class="space-y-6">
+          <p class="text-neutral-600">
+            Dr. Nikas's mission at Hazel Dell Dentistry is to provide every patient with evidence-based
+            dentistry for a lifetime of optimal oral health. She leads a full-service, neighborhood
+            dental practice in Carmel, IN, dedicated to meeting her patients' needs with any of the
+            practice's services.
+          </p>
+          <p class="text-neutral-600">
+            Dr. Nikas and her team take the time to explain treatment options clearly, so every visit
+            feels calm, unhurried, and easy to understand — for patients of all ages.
+          </p>
+          <p class="font-display font-bold text-neutral-900">&mdash; Dr. Suzette Nikas</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-primary text-primary-foreground py-16 md:py-24" aria-labelledby="cta-heading">
+      <div class="max-w-4xl mx-auto px-4 md:px-8 text-center">
+        <h2 id="cta-heading" class="text-primary-foreground mb-4">Schedule a Visit with Dr. Nikas</h2>
+        <p class="text-primary-foreground max-w-2xl mx-auto mb-8">
+          Reach out to our Carmel, IN office to request an appointment.
+        </p>
+        <a
+          href="/contact-us/"
+          class="inline-flex items-center justify-center px-7 py-3.5 bg-neutral-50 text-neutral-900 border border-neutral-50 hover:bg-transparent hover:text-primary-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-50"
+        >
+          Request Appointment
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

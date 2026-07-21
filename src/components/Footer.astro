@@ -1,0 +1,74 @@
+---
+const quickLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Meet Dr. Nikas', href: '/meet-dr-nikas/' },
+  { label: 'Services', href: '/services/' },
+  { label: 'Patient Resources', href: '/patient-resources/' },
+  { label: 'Contact Us', href: '/contact-us/' },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-panel-dark text-panel-dark-foreground">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
+    <div>
+      <p class="font-wordmark text-2xl mb-3">Hazel Dell Dentistry</p>
+      <p class="text-sm text-neutral-300 max-w-xs">
+        Evidence-based dentistry for a lifetime of optimal oral health — a full-service neighborhood
+        dentist in Carmel, IN.
+      </p>
+      <div class="flex items-center gap-4 mt-6">
+        <a
+          href="https://www.instagram.com/hazeldelldentistry"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Hazel Dell Dentistry on Instagram"
+          class="text-panel-dark-foreground hover:text-neutral-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-50"
+        >
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        </a>
+        <a
+          href="https://www.facebook.com/hazeldelldentistry/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Hazel Dell Dentistry on Facebook"
+          class="text-panel-dark-foreground hover:text-neutral-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-50"
+        >
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <nav aria-label="Footer">
+      <p class="text-sm uppercase tracking-wide text-neutral-300 mb-4">Quick Links</p>
+      <ul class="space-y-2.5">
+        {quickLinks.map((link) => (
+          <li>
+            <a href={link.href} class="text-neutral-100 hover:text-neutral-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-50">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div>
+      <p class="text-sm uppercase tracking-wide text-neutral-300 mb-4">Contact</p>
+      <address class="text-neutral-100 not-italic space-y-2.5 text-base">
+        <p>13190 Hazel Dell Pkwy #160<br />Carmel, IN 46033</p>
+        <p><a href="tel:+13177061111" class="hover:text-neutral-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-50">317-706-1111</a></p>
+        <p><a href="mailto:hazeldelloffice@gmail.com" class="hover:text-neutral-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-50">hazeldelloffice@gmail.com</a></p>
+        <p class="text-neutral-300">Mon &ndash; Thu, 7:00 AM &ndash; 4:00 PM</p>
+      </address>
+    </div>
+  </div>
+
+  <div class="border-t border-neutral-600">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-neutral-300">
+      <p>&copy; {year} Hazel Dell Dentistry. All rights reserved.</p>
+      <a href="/privacy/" class="hover:text-neutral-100 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-50">Privacy Policy</a>
+    </div>
+  </div>
+</footer>

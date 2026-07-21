@@ -1,0 +1,228 @@
+---
+const navLinksBefore = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Meet Dr. Nikas', href: '/meet-dr-nikas/' },
+];
+const navLinksAfter = [{ label: 'Patient Resources', href: '/patient-resources/' }];
+
+const services = [
+  { label: 'Emergency Dental Care', href: '/services/emergency-dental-care/' },
+  { label: 'Clear Aligners', href: '/services/clear-aligners/' },
+  { label: 'Dental Cleanings & Exams', href: '/services/dental-cleanings-exams/' },
+  { label: 'Teeth Whitening', href: '/services/teeth-whitening/' },
+  { label: 'Intraoral Camera', href: '/services/intraoral-camera/' },
+  { label: 'Dental Veneers', href: '/services/dental-veneers/' },
+  { label: 'Snore Guard', href: '/services/snore-guard/' },
+  { label: 'Dentures & Partials', href: '/services/denture-partials/' },
+  { label: 'Dental Crowns', href: '/services/dental-crowns/' },
+  { label: 'Implant Crowns', href: '/services/implant-crowns/' },
+  { label: 'Composite Dental Filling', href: '/services/composite-dental-filling/' },
+  { label: 'Dental Bridges', href: '/services/dental-bridges/' },
+  { label: 'Digital X-Rays', href: '/services/digital-xrays/' },
+  { label: 'Panoramic X-Ray', href: '/services/panoramic-xray/' },
+  { label: 'CBCT', href: '/services/cbct/' },
+];
+
+const navLinks = [...navLinksBefore, { label: 'Services', href: '/services/' }, ...navLinksAfter];
+
+const phone = '317-706-1111';
+const phoneHref = 'tel:+13177061111';
+---
+
+<header class="sticky top-0 z-50 bg-neutral-50 border-b border-neutral-200">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 relative">
+    <div class="flex items-center justify-between h-20 md:h-24">
+      <a href="/" class="flex items-center gap-3 shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary rounded-sm">
+        <img
+          src="/images/logo/hazel-dell-dentistry-logo-icon-transparent.png"
+          alt=""
+          width="44"
+          height="38"
+          class="h-9 w-auto md:h-10"
+        />
+        <span class="font-wordmark text-xl md:text-2xl text-neutral-900 leading-none">
+          Hazel Dell Dentistry
+        </span>
+      </a>
+
+      <nav aria-label="Primary" class="hidden lg:flex items-center gap-7">
+        {navLinksBefore.map((link) => (
+          <a
+            href={link.href}
+            class="text-base text-neutral-900 hover:text-neutral-600 transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary rounded-sm"
+          >
+            {link.label}
+          </a>
+        ))}
+
+        <div id="services-menu-wrapper" class="relative">
+          <button
+            id="services-menu-button"
+            type="button"
+            aria-expanded="false"
+            aria-controls="services-menu"
+            class="flex items-center gap-1.5 text-base text-neutral-900 hover:text-neutral-600 transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary rounded-sm"
+          >
+            Services
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 transition-transform">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          <div
+            id="services-menu"
+            role="region"
+            aria-label="Services"
+            class="hidden absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[min(90vw,720px)] bg-neutral-50 border border-neutral-200 shadow-lg p-8 z-50"
+          >
+            <ul class="grid grid-cols-3 gap-x-8 gap-y-4">
+              {services.map((service) => (
+                <li>
+                  <a
+                    href={service.href}
+                    class="text-base text-neutral-900 hover:text-neutral-600 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
+                  >
+                    {service.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-6 pt-6 border-t border-neutral-200">
+              <a
+                href="/services/"
+                class="text-base font-bold text-neutral-900 hover:text-neutral-600 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
+              >
+                View All Services &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {navLinksAfter.map((link) => (
+          <a
+            href={link.href}
+            class="text-base text-neutral-900 hover:text-neutral-600 transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary rounded-sm"
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-3 shrink-0">
+        <a
+          href={phoneHref}
+          class="inline-flex items-center gap-2 px-4 py-2.5 text-sm border border-border-interactive text-neutral-900 hover:bg-neutral-100 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          Call: {phone}
+        </a>
+        <a
+          href="/contact-us/"
+          class="inline-flex items-center px-5 py-2.5 text-sm bg-primary text-primary-foreground border border-primary hover:bg-primary-hover-background hover:text-primary-hover-foreground hover:border-primary-hover-border transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          Request Appointment
+        </a>
+      </div>
+
+      <button
+        id="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="lg:hidden inline-flex items-center justify-center w-11 h-11 -mr-2 text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      >
+        <span class="sr-only">Toggle menu</span>
+        <svg id="menu-icon-open" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg id="menu-icon-close" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-neutral-200 bg-neutral-50">
+    <nav aria-label="Mobile" class="flex flex-col px-4 py-4 gap-1">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="px-2 py-3 text-lg text-neutral-900 border-b border-neutral-200 last:border-b-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          {link.label}
+        </a>
+      ))}
+      <div class="flex flex-col gap-3 mt-4">
+        <a
+          href={phoneHref}
+          class="inline-flex items-center justify-center px-4 py-3 text-sm border border-border-interactive text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          Call: {phone}
+        </a>
+        <a
+          href="/contact-us/"
+          class="inline-flex items-center justify-center px-5 py-3 text-sm bg-primary text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          Request Appointment
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    menu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden');
+    iconClose?.classList.toggle('hidden');
+  });
+
+  const servicesWrapper = document.getElementById('services-menu-wrapper');
+  const servicesButton = document.getElementById('services-menu-button');
+  const servicesMenu = document.getElementById('services-menu');
+  const servicesChevron = servicesButton?.querySelector('svg');
+
+  function openServicesMenu() {
+    servicesButton?.setAttribute('aria-expanded', 'true');
+    servicesMenu?.classList.remove('hidden');
+    servicesChevron?.classList.add('rotate-180');
+  }
+
+  function closeServicesMenu() {
+    servicesButton?.setAttribute('aria-expanded', 'false');
+    servicesMenu?.classList.add('hidden');
+    servicesChevron?.classList.remove('rotate-180');
+  }
+
+  servicesButton?.addEventListener('click', () => {
+    const isOpen = servicesButton.getAttribute('aria-expanded') === 'true';
+    if (isOpen) closeServicesMenu();
+    else openServicesMenu();
+  });
+
+  servicesWrapper?.addEventListener('focusout', (event) => {
+    const next = event.relatedTarget as Node | null;
+    if (!next || !servicesWrapper.contains(next)) closeServicesMenu();
+  });
+
+  document.addEventListener('click', (event) => {
+    if (servicesWrapper && !servicesWrapper.contains(event.target as Node)) closeServicesMenu();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && servicesButton?.getAttribute('aria-expanded') === 'true') {
+      closeServicesMenu();
+      servicesButton.focus();
+    }
+  });
+</script>

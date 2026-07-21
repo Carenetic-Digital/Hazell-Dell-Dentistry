@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('contact form accepts input', async ({ page }) => {
-  await page.goto('/contact');
+  await page.goto('/contact-us/');
 
   const form = page.locator('form');
   if (await form.count() === 0) {

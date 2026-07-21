@@ -1,0 +1,5 @@
+# Redirects from old site URLs (Wayback-archived hazeldelldentistry.com) to the new IA
+# Cloudflare format: /source /destination status
+
+/tour-the-new-office /about/ 301
+/services-2 /services/ 301

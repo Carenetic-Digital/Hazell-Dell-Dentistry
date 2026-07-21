@@ -21,27 +21,26 @@ List each page explicitly. Use indentation for hierarchy.
 
 ---
 
-## Option B: Build All Discovered Pages
-
-Let Claude discover pages from the reference site and build them all.
-
-```
-BUILD_ALL
-
-Exclude:
-- /wp-admin/*
-- /login
-- /old-*
-- /draft-*
-```
-
----
-
 ## Your Sitemap
-
-Delete the option you're NOT using and fill in below:
 
 - Home (/)
 - About (/about)
+- Meet Dr. Nikas (/meet-dr-nikas)
 - Services (/services)
-- Contact (/contact)
+  - Emergency Dental Care (/services/emergency-dental-care)
+  - Clear Aligners (/services/clear-aligners)
+  - Dental Cleanings & Exams (/services/dental-cleanings-exams)
+  - Teeth Whitening (/services/teeth-whitening)
+  - Intraoral Camera (/services/intraoral-camera)
+  - Dental Veneers (/services/dental-veneers)
+  - Snore Guard (/services/snore-guard)
+  - Denture & Partials (/services/denture-partials)
+  - Dental Crowns (/services/dental-crowns)
+  - Implant Crowns (/services/implant-crowns)
+  - Composite Dental Filling (/services/composite-dental-filling)
+  - Dental Bridges (/services/dental-bridges)
+  - Digital Xrays (/services/digital-xrays)
+  - Panoramic XRAY (/services/panoramic-xray)
+  - CBCT (/services/cbct)
+- Patient Resources (/patient-resources)
+- Contact Us / Request an Appointment (/contact-us)

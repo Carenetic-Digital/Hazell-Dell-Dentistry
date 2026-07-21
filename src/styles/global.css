@@ -1,28 +1,155 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand colors - populated from intake/branding/colors.md */
-  --color-primary: oklch(0.5 0.2 250);
-  --color-secondary: oklch(0.7 0.15 200);
-  --color-accent: oklch(0.6 0.25 30);
+  /* ============================================================
+     Brand colors — from intake/branding/colors.md
+     Strict monochrome/grayscale brand. No secondary/accent hue —
+     all emphasis comes from value contrast (black/white/gray) and
+     typography. Do not introduce a saturated brand color anywhere
+     other than the documented muted-red error exception below.
+     ============================================================ */
 
-  /* Neutral scale */
-  --color-neutral-50: oklch(0.98 0 0);
-  --color-neutral-100: oklch(0.96 0 0);
-  --color-neutral-200: oklch(0.92 0 0);
-  --color-neutral-300: oklch(0.87 0 0);
-  --color-neutral-400: oklch(0.7 0 0);
-  --color-neutral-500: oklch(0.55 0 0);
-  --color-neutral-600: oklch(0.45 0 0);
-  --color-neutral-700: oklch(0.35 0 0);
-  --color-neutral-800: oklch(0.25 0 0);
-  --color-neutral-900: oklch(0.15 0 0);
+  /* Primary / CTA — #101010 near-black. Hover inverts to a white
+     button with black text/border (see hover tokens below). */
+  --color-primary: oklch(0.173 0 0); /* #101010 */
+  --color-primary-foreground: oklch(1 0 0); /* white text/icon on the primary button — 19.0:1 */
+  --color-primary-hover-background: oklch(1 0 0); /* white — hover inverts the fill */
+  --color-primary-hover-foreground: oklch(0.173 0 0); /* black text on hover — 19.0:1 on white */
+  --color-primary-hover-border: oklch(0.173 0 0); /* black border on hover */
+
+  /* Neutral scale (50–900), anchored to the documented grays:
+     300 = panel fill light (#CCCCCC), 400 = tertiary text/border (#999999),
+     600 = secondary text (#666666), 800 = panel fill dark (#404040),
+     900 = primary text (#333333). 100/200/500/700 are interpolated steps. */
+  --color-neutral-50: oklch(1 0 0); /* #FFFFFF — background */
+  --color-neutral-100: oklch(0.976 0 0); /* #F7F7F7 — subtle bg alt */
+  --color-neutral-200: oklch(0.922 0 0); /* #E5E5E5 — light dividers */
+  --color-neutral-300: oklch(0.845 0 0); /* #CCCCCC — panel fill (light), documented */
+  --color-neutral-400: oklch(0.683 0 0); /* #999999 — tertiary text/border, documented.
+    NOTE: only 2.85:1 on white — fails 4.5:1 text AND the 3:1 UI-component minimum.
+    Do not use as text. Use only for decorative dividers/borders (no WCAG contrast
+    requirement applies to non-interactive dividers). For interactive borders that
+    must clear 3:1 (inputs, focus outlines) use --color-border-interactive instead. */
+  --color-neutral-500: oklch(0.6 0 0); /* #808080 — interpolated mid gray, 3.95:1 on white */
+  --color-neutral-600: oklch(0.51 0 0); /* #666666 — secondary/muted text, documented, 5.74:1 on white */
+  --color-neutral-700: oklch(0.42 0 0); /* #4D4D4D — documented "success" gray, 8.45:1 on white */
+  --color-neutral-800: oklch(0.371 0 0); /* #404040 — panel fill (dark), documented, 10.37:1 vs white text */
+  --color-neutral-900: oklch(0.321 0 0); /* #333333 — primary text, documented, 12.63:1 on white */
+
+  /* Semantic base tokens */
+  --color-background: var(--color-neutral-50);
+  --color-foreground: var(--color-neutral-900); /* body text — 12.63:1 on background */
+  --color-muted: var(--color-neutral-600); /* secondary/placeholder text — 5.74:1 on background, clears 4.5:1 */
+  --color-border: var(--color-neutral-400); /* decorative dividers/borders only, see note above */
+  --color-border-interactive: var(--color-neutral-500); /* input/button borders needing WCAG 1.4.11 3:1 — 3.95:1 on white */
+  --color-ring: var(--color-primary); /* focus ring — 19.0:1 on white, well above the 3:1 non-text minimum */
+  --color-link: var(--color-foreground); /* no accent hue for links; pair with underline per WCAG 1.4.1 use-of-color */
+
+  /* Panel fills (alternating homepage tiles, etc.) */
+  --color-panel: var(--color-neutral-300); /* light panel fill, #CCCCCC */
+  --color-panel-foreground: var(--color-neutral-900); /* text on light panel — 7.87:1.
+    Do not use --color-muted (neutral-600) for body copy on this panel — only 3.58:1, fails 4.5:1 normal text. */
+  --color-panel-dark: var(--color-neutral-800); /* dark panel fill, #404040 */
+  --color-panel-dark-foreground: var(--color-neutral-50); /* white text on dark panel — 10.37:1 */
+
+  /* Semantic states — desaturated grays per intake notes (no saturated
+     red/green/yellow anywhere in the monochrome system). */
+  --color-success: var(--color-neutral-700); /* #4D4D4D, documented — pair with a checkmark icon, not color, for meaning */
+  --color-warning: var(--color-neutral-600); /* #666666, documented */
+  --color-info: var(--color-neutral-600); /* #666666, documented */
+
+  /* Error: default stays monochrome per brand direction. A muted-red
+     alternative is documented as the one sanctioned exception (intake
+     notes: "if the design-reviewer flags it, a muted red for error text
+     only is an acceptable exception"). Swap --color-error to
+     --color-error-accessible only if grayscale error text proves to be
+     a usability problem in form validation. */
+  --color-error: var(--color-error-mono);
+  --color-error-mono: oklch(0.218 0 0); /* #1A1A1A, documented — 17.4:1 on white */
+  --color-error-accessible: oklch(0.505 0.1905 27.5); /* #B91C1C muted red — 6.47:1 on white, clears AA with margin */
 
   /* Typography - populated from intake/branding/fonts.md */
-  --font-display: "Inter", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  /* Wordmark: logo lockup ONLY ("Hazel Dell Dentistry" text in the header). Never use for headings/nav/body. */
+  --font-wordmark: "Playfair Display", "Times New Roman", Times, serif;
+  /* Display (h1-h6) and body: one serif typeface site-wide, matching the reference site's Times New Roman everywhere-but-the-logo pattern. */
+  --font-display: "PT Serif", "Times New Roman", Times, serif;
+  --font-body: "PT Serif", "Times New Roman", Times, serif;
+
+  /* Fluid type scale (clamp: mobile -> desktop) */
+  --font-size-xs: clamp(0.8rem, 0.78rem + 0.1vw, 0.875rem);      /* 13-14px */
+  --font-size-sm: clamp(0.875rem, 0.85rem + 0.15vw, 1rem);       /* 14-16px */
+  --font-size-base: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);     /* 17-20px */
+  --font-size-lg: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);    /* 18-22px */
+  --font-size-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.625rem);     /* 20-26px */
+  --font-size-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);        /* 24-32px */
+  --font-size-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);    /* 30-40px */
+  --font-size-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3.25rem);     /* 36-52px */
+  --font-size-5xl: clamp(2.75rem, 2rem + 4vw, 4.375rem);         /* 44-70px */
+
+  /* Line heights */
+  --leading-none: 1;
+  --leading-tight: 1.1;      /* h1/h2 large display headings */
+  --leading-snug: 1.25;      /* h3/h4 */
+  --leading-normal: 1.4;     /* h5/h6, nav, small text */
+  --leading-relaxed: 1.6;    /* body copy - generous editorial rhythm */
+  --leading-loose: 1.75;
+
+  /* Letter spacing */
+  --tracking-tight: -0.02em;   /* h1/h2 */
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;    /* uppercase labels (e.g. hero category tiles) */
 
   /* Spacing scale */
   --spacing-section: 5rem;
   --spacing-content: 2rem;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    line-height: var(--leading-relaxed);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: var(--leading-tight);
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: var(--font-size-5xl);
+    letter-spacing: var(--tracking-tight);
+  }
+
+  h2 {
+    font-size: var(--font-size-4xl);
+    letter-spacing: var(--tracking-tight);
+  }
+
+  h3 {
+    font-size: var(--font-size-3xl);
+    line-height: var(--leading-snug);
+  }
+
+  h4 {
+    font-size: var(--font-size-2xl);
+    line-height: var(--leading-snug);
+  }
+
+  h5 {
+    font-size: var(--font-size-xl);
+    line-height: var(--leading-normal);
+  }
+
+  h6 {
+    font-size: var(--font-size-lg);
+    line-height: var(--leading-normal);
+  }
+
+  p {
+    text-wrap: pretty;
+    max-width: 70ch;
+  }
 }

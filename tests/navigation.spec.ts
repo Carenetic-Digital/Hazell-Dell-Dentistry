@@ -8,7 +8,7 @@ test('homepage loads', async ({ page }) => {
 test('all navigation links work', async ({ page }) => {
   await page.goto('/');
 
-  const navLinks = page.locator('nav a');
+  const navLinks = page.locator('nav a:visible');
   const count = await navLinks.count();
 
   for (let i = 0; i < count; i++) {

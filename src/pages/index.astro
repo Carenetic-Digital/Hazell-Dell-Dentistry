@@ -1,21 +1,252 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+
+const valueProps = [
+  {
+    title: 'Evidence-Based Care',
+    body: 'Every recommendation is grounded in current dental research, not guesswork — so you understand exactly why a treatment is right for you.',
+  },
+  {
+    title: 'Comfortable & Stress-Free',
+    body: "Dr. Nikas and our team take the time to explain your options clearly, so every visit feels calm and unhurried, for patients of all ages.",
+  },
+  {
+    title: 'Modern Dental Technology',
+    body: 'Digital X-rays, an intraoral camera, and CBCT imaging let us diagnose accurately while keeping your radiation exposure as low as possible.',
+  },
+];
+
+const services = [
+  { label: 'Emergency Dental Care', href: '/services/emergency-dental-care/' },
+  { label: 'Clear Aligners', href: '/services/clear-aligners/' },
+  { label: 'Dental Cleanings & Exams', href: '/services/dental-cleanings-exams/' },
+  { label: 'Teeth Whitening', href: '/services/teeth-whitening/' },
+  { label: 'Intraoral Camera', href: '/services/intraoral-camera/' },
+  { label: 'Dental Veneers', href: '/services/dental-veneers/' },
+  { label: 'Snore Guard', href: '/services/snore-guard/' },
+  { label: 'Dentures & Partials', href: '/services/denture-partials/' },
+  { label: 'Dental Crowns', href: '/services/dental-crowns/' },
+  { label: 'Implant Crowns', href: '/services/implant-crowns/' },
+  { label: 'Composite Dental Filling', href: '/services/composite-dental-filling/' },
+  { label: 'Dental Bridges', href: '/services/dental-bridges/' },
+  { label: 'Digital X-Rays', href: '/services/digital-xrays/' },
+  { label: 'Panoramic X-Ray', href: '/services/panoramic-xray/' },
+  { label: 'CBCT', href: '/services/cbct/' },
+];
 ---
 
-<BaseLayout title="Site Factory">
-  <main class="min-h-screen flex items-center justify-center">
-    <div class="text-center p-8">
-      <h1 class="text-4xl font-display font-bold text-primary mb-4">
-        Site Factory Ready
-      </h1>
-      <p class="text-lg text-neutral-600 mb-8">
-        Run <code class="bg-neutral-200 px-2 py-1 rounded">/project:intake</code> to begin.
-      </p>
-      <div class="text-sm text-neutral-500">
-        <p>1. Edit <code>intake/INTAKE.md</code> with your project details</p>
-        <p>2. Edit <code>intake/sitemap.md</code> with your page structure</p>
-        <p>3. Run the intake command to start generation</p>
+<BaseLayout
+  title="Hazel Dell Dentistry | General & Cosmetic Dentist in Carmel, IN"
+  description="Evidence-based dentistry for a lifetime of optimal oral health. Hazel Dell Dentistry is a full-service neighborhood dental practice in Carmel, IN, offering general, cosmetic, and emergency dental care for patients of all ages."
+  image="/images/logo/hazel-dell-dentistry-logo-icon-transparent.png"
+>
+  <Header />
+
+  <main id="main-content">
+    <Hero />
+
+    <!-- Value Props -->
+    <section class="bg-neutral-50 py-16 md:py-24" aria-labelledby="value-props-heading">
+      <h2 id="value-props-heading" class="sr-only">Why Choose Hazel Dell Dentistry</h2>
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-8">
+        {valueProps.map((prop) => (
+          <div class="text-center px-2">
+            <h3 class="text-neutral-900 mb-3">{prop.title}</h3>
+            <p class="text-neutral-600">{prop.body}</p>
+          </div>
+        ))}
       </div>
-    </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="bg-panel py-16 md:py-24" aria-labelledby="services-heading">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-12">
+          <h2 id="services-heading" class="text-panel-foreground mb-4">Our Services</h2>
+          <p class="text-panel-foreground max-w-2xl mx-auto">
+            A full range of general, cosmetic, and restorative treatments, backed by the latest
+            advancements in dental technology.
+          </p>
+        </div>
+        <ul class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+          {services.map((service) => (
+            <li>
+              <a
+                href={service.href}
+                class="flex items-center justify-center text-center h-20 md:h-24 px-2 bg-panel-dark text-panel-dark-foreground hover:bg-neutral-900 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-50"
+              >
+                <span class="text-base md:text-lg underline underline-offset-4 whitespace-nowrap">{service.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div class="text-center mt-10">
+          <a
+            href="/services/"
+            class="inline-flex items-center justify-center px-7 py-3.5 bg-primary text-primary-foreground border border-primary hover:bg-primary-hover-background hover:text-primary-hover-foreground hover:border-primary-hover-border transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            View All Services
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Office Tour Teaser -->
+    <section class="bg-neutral-50 py-16 md:py-24" aria-labelledby="office-heading">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div class="grid grid-cols-2 gap-3 md:gap-4">
+          <picture class="col-span-2">
+            <source srcset="/images/office/office-waiting-room.avif" type="image/avif" />
+            <source srcset="/images/office/office-waiting-room.webp" type="image/webp" />
+            <img
+              src="/images/office/office-waiting-room.jpg"
+              alt="Bright, modern waiting room at Hazel Dell Dentistry"
+              width="1600"
+              height="1068"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-56 md:h-64 object-cover"
+            />
+          </picture>
+          <picture>
+            <source srcset="/images/office/office-treatment-room-wide.avif" type="image/avif" />
+            <source srcset="/images/office/office-treatment-room-wide.webp" type="image/webp" />
+            <img
+              src="/images/office/office-treatment-room-wide.jpg"
+              alt="Treatment room with dental chair and equipment"
+              width="1600"
+              height="1069"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-40 md:h-48 object-cover"
+            />
+          </picture>
+          <picture>
+            <source srcset="/images/office/office-front-desk.avif" type="image/avif" />
+            <source srcset="/images/office/office-front-desk.webp" type="image/webp" />
+            <img
+              src="/images/office/office-front-desk.jpg"
+              alt="Front desk and reception area at Hazel Dell Dentistry"
+              width="1600"
+              height="1068"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-40 md:h-48 object-cover"
+            />
+          </picture>
+        </div>
+        <div>
+          <h2 id="office-heading" class="text-neutral-900 mb-4">About Our Office</h2>
+          <p class="text-neutral-600 mb-8">
+            Step inside our Carmel, IN office and see the comfortable, modern space where we care
+            for patients of all ages — from a welcoming reception area to fully equipped treatment
+            rooms.
+          </p>
+          <a
+            href="/contact-us/"
+            class="inline-flex items-center justify-center px-7 py-3.5 border border-border-interactive text-neutral-900 hover:bg-neutral-100 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            Request Appointment
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet the Doctor -->
+    <section class="bg-panel py-16 md:py-24" aria-labelledby="doctor-heading">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-[minmax(0,320px)_1fr] gap-10 lg:gap-16 items-center">
+        <div class="flex items-center justify-center bg-panel-dark aspect-square max-w-xs mx-auto lg:mx-0 w-full">
+          <img
+            src="/images/logo/hazel-dell-dentistry-logo-icon-transparent.png"
+            alt=""
+            width="220"
+            height="190"
+            loading="lazy"
+            decoding="async"
+            class="w-2/5 h-auto opacity-90"
+          />
+        </div>
+        <div>
+          <h2 id="doctor-heading" class="text-panel-foreground mb-4">Meet Our Doctor</h2>
+          <p class="text-panel-foreground mb-6">
+            Dr. Nikas's mission at Hazel Dell Dentistry is to provide every patient with
+            evidence-based dentistry for a lifetime of optimal oral health. We are a full-service,
+            neighborhood dentist in Carmel, IN, dedicated to our patients' needs with any of our
+            services.
+          </p>
+          <p class="text-panel-foreground font-display font-bold mb-6">&mdash; Dr. Suzette Nikas</p>
+          <a
+            href="/meet-dr-nikas/"
+            class="inline-flex items-center justify-center px-7 py-3.5 bg-primary text-primary-foreground border border-primary hover:bg-primary-hover-background hover:text-primary-hover-foreground hover:border-primary-hover-border transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            More About Dr. Nikas
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section id="contact" class="bg-primary text-primary-foreground py-16 md:py-24" aria-labelledby="contact-heading">
+      <div class="max-w-6xl mx-auto px-4 md:px-8">
+        <div class="text-center mb-12">
+          <h2 id="contact-heading" class="text-primary-foreground mb-4">Contact Us</h2>
+          <p class="text-primary-foreground max-w-2xl mx-auto">
+            Ready to schedule your visit? Reach out or request an appointment below.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+          <dl class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div>
+              <dt class="text-sm uppercase tracking-wide text-neutral-300 mb-2">Our Address</dt>
+              <dd class="text-primary-foreground">13190 Hazel Dell Pkwy #160<br />Carmel, IN 46033</dd>
+            </div>
+            <div>
+              <dt class="text-sm uppercase tracking-wide text-neutral-300 mb-2">Phone</dt>
+              <dd>
+                <a href="tel:+13177061111" class="text-primary-foreground hover:text-neutral-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-50">
+                  317-706-1111
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt class="text-sm uppercase tracking-wide text-neutral-300 mb-2">Email</dt>
+              <dd>
+                <a href="mailto:hazeldelloffice@gmail.com" class="text-primary-foreground hover:text-neutral-300 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-50">
+                  hazeldelloffice@gmail.com
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt class="text-sm uppercase tracking-wide text-neutral-300 mb-2">Open Hours</dt>
+              <dd class="text-primary-foreground">Monday &ndash; Thursday<br />7:00 AM &ndash; 4:00 PM</dd>
+            </div>
+          </dl>
+          <div class="flex flex-col gap-6">
+            <div class="aspect-video w-full border border-neutral-700">
+              <iframe
+                title="Map showing Hazel Dell Dentistry location in Carmel, IN"
+                src="https://www.google.com/maps?q=13190+Hazel+Dell+Pkwy+%23160,+Carmel,+IN+46033&output=embed"
+                width="100%"
+                height="100%"
+                style="border:0"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            <a
+              href="/contact-us/"
+              class="inline-flex items-center justify-center px-7 py-3.5 bg-neutral-50 text-neutral-900 border border-neutral-50 hover:bg-transparent hover:text-primary-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-50"
+            >
+              Request Appointment
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <Footer />
 </BaseLayout>

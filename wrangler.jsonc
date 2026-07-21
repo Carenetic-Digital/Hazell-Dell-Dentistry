@@ -2,6 +2,9 @@
   "name": "hazel-dell-dentistry",
   "compatibility_date": "2026-02-01",
   "account_id": "6ba8d559dd652da1003752c4674dfa6c",
+  "routes": [
+    { "pattern": "hazel-dell-dentistry.spark0.io", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./dist"
   }

@@ -50,17 +50,27 @@ const breadcrumbData = {
   <main id="main-content">
     <!-- Breadcrumb + Title -->
     <section class="bg-neutral-50 py-12 md:py-16 border-b border-neutral-200">
-      <div class="max-w-4xl mx-auto px-4 md:px-8">
-        <nav aria-label="Breadcrumb" class="mb-4">
-          <ol class="flex flex-wrap items-center gap-2 text-sm text-neutral-600">
-            <li><a href="/" class="hover:text-neutral-900 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm">Home</a></li>
-            <li aria-hidden="true">/</li>
-            <li><a href="/services/" class="hover:text-neutral-900 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm">Services</a></li>
-            <li aria-hidden="true">/</li>
-            <li class="text-neutral-900" aria-current="page">{service.name}</li>
-          </ol>
-        </nav>
-        <h1 class="text-neutral-900">{service.name}</h1>
+      <div class="max-w-4xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:items-center">
+        <div>
+          <nav aria-label="Breadcrumb" class="mb-4">
+            <ol class="flex flex-wrap items-center gap-2 text-sm text-neutral-600">
+              <li><a href="/" class="hover:text-neutral-900 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm">Home</a></li>
+              <li aria-hidden="true">/</li>
+              <li><a href="/services/" class="hover:text-neutral-900 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm">Services</a></li>
+              <li aria-hidden="true">/</li>
+              <li class="text-neutral-900" aria-current="page">{service.name}</li>
+            </ol>
+          </nav>
+          <h1 class="text-neutral-900">{service.name}</h1>
+        </div>
+        <!--
+          Image placeholder — swap for a real photo of this treatment/service
+          before launch. Use OptimizedImage once an asset is sourced; see
+          src/components/OptimizedImage.astro.
+        -->
+        <div class="border border-dashed border-border-interactive aspect-video flex items-center justify-center text-center px-6">
+          <p class="text-neutral-600">Image placeholder — {service.name} photo goes here</p>
+        </div>
       </div>
     </section>
 

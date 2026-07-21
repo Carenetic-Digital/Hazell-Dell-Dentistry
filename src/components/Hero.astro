@@ -1,8 +1,8 @@
 ---
 const categories = [
-  { label: 'General Dentistry', tone: 'dark' },
-  { label: 'Cosmetic Dentistry', tone: 'light' },
-  { label: 'Emergency Dental Care', tone: 'dark' },
+  { label: 'General Dentistry', tone: 'dark', href: '/services/dental-cleanings-exams/' },
+  { label: 'Cosmetic Dentistry', tone: 'light', href: '/services/teeth-whitening/' },
+  { label: 'Emergency Dental Care', tone: 'dark', href: '/services/emergency-dental-care/' },
 ];
 ---
 
@@ -16,27 +16,22 @@ const categories = [
       advancements in dental technology, we can show you everything we can do to improve your oral
       health.
     </p>
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+    <div class="flex items-center justify-center">
       <a
         href="/contact-us/"
         class="inline-flex items-center justify-center px-7 py-3.5 bg-primary text-primary-foreground border border-primary hover:bg-primary-hover-background hover:text-primary-hover-foreground hover:border-primary-hover-border transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
       >
         Request Appointment
       </a>
-      <a
-        href="tel:+13177061111"
-        class="inline-flex items-center justify-center px-7 py-3.5 border border-border-interactive text-neutral-900 hover:bg-neutral-100 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-      >
-        Call: 317-706-1111
-      </a>
     </div>
   </div>
 
   <div class="grid grid-cols-1 sm:grid-cols-3">
     {categories.map((cat) => (
-      <div
+      <a
+        href={cat.href}
         class:list={[
-          'flex items-center justify-center text-center py-10 md:py-14 px-6',
+          'flex items-center justify-center text-center py-10 md:py-14 px-6 transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary',
           cat.tone === 'dark'
             ? 'bg-panel-dark text-panel-dark-foreground'
             : 'bg-panel text-panel-foreground',
@@ -45,7 +40,7 @@ const categories = [
         <p class="text-lg md:text-xl uppercase tracking-wide underline underline-offset-4">
           {cat.label}
         </p>
-      </div>
+      </a>
     ))}
   </div>
 </section>

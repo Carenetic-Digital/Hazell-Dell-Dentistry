@@ -88,6 +88,13 @@ const faqData = {
             Give our office a call at <a href="tel:+13177061111" class="underline underline-offset-4 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm">317-706-1111</a> and
             we'll help you schedule a time that works and answer any questions before you arrive.
           </p>
+          <a
+            href="/new-patient-registration.pdf"
+            download
+            class="inline-flex items-center justify-center px-7 py-3.5 bg-primary text-primary-foreground border border-primary hover:bg-primary-hover-background hover:text-primary-hover-foreground hover:border-primary-hover-border transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            Download New Patient Registration (PDF)
+          </a>
         </div>
       </div>
     </section>
@@ -118,14 +125,23 @@ const faqData = {
     <section class="bg-panel py-16 md:py-24" aria-labelledby="faq-heading">
       <div class="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-[minmax(0,280px)_1fr] gap-8 lg:gap-16">
         <h2 id="faq-heading" class="text-panel-foreground">FAQs</h2>
-        <dl class="space-y-8">
-          {faqs.map((faq) => (
-            <div>
-              <dt class="text-panel-foreground font-display font-bold mb-2">{faq.question}</dt>
-              <dd class="text-panel-foreground">{faq.answer}</dd>
-            </div>
-          ))}
-        </dl>
+        <div class="space-y-8">
+          <dl class="space-y-8">
+            {faqs.map((faq) => (
+              <div>
+                <dt class="text-panel-foreground font-display font-bold mb-2">{faq.question}</dt>
+                <dd class="text-panel-foreground">{faq.answer}</dd>
+              </div>
+            ))}
+          </dl>
+          <a
+            href="/faq.pdf"
+            download
+            class="inline-flex items-center justify-center px-7 py-3.5 border border-border-interactive text-panel-foreground hover:bg-neutral-400/20 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            Download Full FAQ (PDF)
+          </a>
+        </div>
       </div>
     </section>
 

@@ -158,16 +158,20 @@ const services = [
     <!-- Meet the Doctor -->
     <section class="bg-panel py-16 md:py-24" aria-labelledby="doctor-heading">
       <div class="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-[minmax(0,320px)_1fr] gap-10 lg:gap-16 items-center">
-        <div class="flex items-center justify-center bg-panel-dark aspect-square max-w-xs mx-auto lg:mx-0 w-full">
-          <img
-            src="/images/logo/hazel-dell-dentistry-logo-icon-transparent.png"
-            alt=""
-            width="220"
-            height="190"
-            loading="lazy"
-            decoding="async"
-            class="w-2/5 h-auto opacity-90"
-          />
+        <div class="aspect-square max-w-xs mx-auto lg:mx-0 w-full">
+          <picture>
+            <source srcset="/images/team/dr-suzette-nikas.avif" type="image/avif" />
+            <source srcset="/images/team/dr-suzette-nikas.webp" type="image/webp" />
+            <img
+              src="/images/team/dr-suzette-nikas.jpg"
+              alt="Dr. Suzette Nikas, DDS"
+              width="1254"
+              height="1254"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover"
+            />
+          </picture>
         </div>
         <div>
           <h2 id="doctor-heading" class="text-panel-foreground mb-4">Meet Our Doctor</h2>

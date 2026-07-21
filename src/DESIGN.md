@@ -81,12 +81,10 @@ free brand asset or an unrelated Wix stock placeholder never swapped out; see `r
 Notes for detail).
 
 - **Used**: real office interior photos (`public/images/office/`) in the homepage "Tour Our Office"
-  section — the one place genuine, on-brand photography exists.
-- **Deliberately NOT used**: a stock "doctor" headshot standing in for Dr. Nikas. Hazel Dell
-  Dentistry is a real practice with a real doctor; using an unrelated stock photo captioned with her
-  name would misrepresent a real person. The "Meet Our Doctor" section uses the logo mark on a dark
-  panel instead of a fabricated headshot — replace with a real photo of Dr. Nikas if the client
-  provides one.
+  section, the real storefront exterior in the homepage hero, service-specific photos on several
+  service pages (`public/images/services/`), and a real headshot of Dr. Nikas
+  (`public/images/team/`) in every "Meet the Doctor" section (homepage, About, Meet Dr. Nikas) — the
+  earlier placeholder (logo mark on a dark panel) was a stand-in until a real photo was provided.
 - **Deliberately NOT used**: a generic full-bleed contact-section background photo (the reference
   site used an unrelated ocean-wave stock image here). The contact section instead uses the primary
   near-black background plus a real Google Maps embed of the actual office address.

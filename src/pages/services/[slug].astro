@@ -63,14 +63,31 @@ const breadcrumbData = {
           </nav>
           <h1 class="text-neutral-900">{service.name}</h1>
         </div>
-        <!--
-          Image placeholder — swap for a real photo of this treatment/service
-          before launch. Use OptimizedImage once an asset is sourced; see
-          src/components/OptimizedImage.astro.
-        -->
-        <div class="border border-dashed border-border-interactive aspect-video flex items-center justify-center text-center px-6">
-          <p class="text-neutral-600">Image placeholder — {service.name} photo goes here</p>
-        </div>
+        {service.heroImage ? (
+          <picture>
+            <source srcset={service.heroImage.src.replace(/\.jpg$/, '.avif')} type="image/avif" />
+            <source srcset={service.heroImage.src.replace(/\.jpg$/, '.webp')} type="image/webp" />
+            <img
+              src={service.heroImage.src}
+              alt={service.heroImage.alt}
+              width={service.heroImage.width}
+              height={service.heroImage.height}
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              class="w-full aspect-video object-cover"
+            />
+          </picture>
+        ) : (
+          <!--
+            Image placeholder — swap for a real photo of this treatment/service
+            before launch. Use OptimizedImage once an asset is sourced; see
+            src/components/OptimizedImage.astro.
+          -->
+          <div class="border border-dashed border-border-interactive aspect-video flex items-center justify-center text-center px-6">
+            <p class="text-neutral-600">Image placeholder — {service.name} photo goes here</p>
+          </div>
+        )}
       </div>
     </section>
 

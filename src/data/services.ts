@@ -6,6 +6,7 @@ export interface Service {
   paragraphs: string[];
   bullets?: string[];
   related: string[];
+  heroImage?: { src: string; alt: string; width: number; height: number };
 }
 
 export const services: Service[] = [
@@ -19,6 +20,12 @@ export const services: Service[] = [
       'If you are an existing patient, please contact us with an emergency and we will get back to you as soon as possible. If we have not seen you in a while, a comprehensive exam and imaging may be needed prior to treatment.',
     ],
     related: ['dental-crowns', 'composite-dental-filling', 'dental-cleanings-exams'],
+    heroImage: {
+      src: '/images/services/emergency-dental-care-treatment-room.jpg',
+      alt: 'Fully equipped dental treatment room at Hazel Dell Dentistry, ready for emergency care',
+      width: 1536,
+      height: 1024,
+    },
   },
   {
     slug: 'clear-aligners',
@@ -30,6 +37,12 @@ export const services: Service[] = [
       'Clear aligners represent a discreet and effective orthodontic solution to crooked teeth, employing nearly invisible trays to progressively align teeth and achieve a more uniform smile. This innovative approach offers an inconspicuous alternative to traditional braces, catering to both aesthetic and functional needs.',
     ],
     related: ['teeth-whitening', 'dental-veneers', 'dental-cleanings-exams'],
+    heroImage: {
+      src: '/images/services/clear-aligners-tray.jpg',
+      alt: 'Close-up of a clear plastic dental aligner tray',
+      width: 1536,
+      height: 1536,
+    },
   },
   {
     slug: 'dental-cleanings-exams',
@@ -46,6 +59,12 @@ export const services: Service[] = [
       'Examine your smile for signs of any damaging dental conditions or diseases.',
     ],
     related: ['digital-xrays', 'intraoral-camera', 'panoramic-xray'],
+    heroImage: {
+      src: '/images/services/dental-cleanings-exams-checkup.jpg',
+      alt: 'Dentist examining a patient’s teeth during a dental exam',
+      width: 1536,
+      height: 1536,
+    },
   },
   {
     slug: 'teeth-whitening',
@@ -57,6 +76,12 @@ export const services: Service[] = [
       'Take-home teeth whitening at Hazel Dell Dentistry in Carmel, Indiana, presents a convenient and effective method for achieving a dazzling smile. This at-home solution empowers our patients to lighten dental discoloration and attain a brighter, more confident appearance without the need for extensive in-office treatments.',
     ],
     related: ['dental-veneers', 'clear-aligners', 'dental-cleanings-exams'],
+    heroImage: {
+      src: '/images/services/teeth-whitening-shade-comparison.jpg',
+      alt: 'Dentist applying take-home whitening gel with a shade guide showing before and after tooth color',
+      width: 1717,
+      height: 916,
+    },
   },
   {
     slug: 'intraoral-camera',
@@ -93,6 +118,12 @@ export const services: Service[] = [
       'You can customize the device by following a relatively simple boil-and-bite setup outlined in the accompanying information guide, similar to fitting an athletic mouthguard. With careful fitting and regular use, the Snore Guard can be a good option for those who snore or have OSA.',
     ],
     related: ['dental-cleanings-exams', 'digital-xrays'],
+    heroImage: {
+      src: '/images/services/snore-guard-device.jpg',
+      alt: '3D rendering of a Snore Guard mandibular advancement device',
+      width: 1536,
+      height: 959,
+    },
   },
   {
     slug: 'denture-partials',
@@ -211,6 +242,12 @@ export const services: Service[] = [
       'Bone loss',
     ],
     related: ['panoramic-xray', 'cbct', 'intraoral-camera'],
+    heroImage: {
+      src: '/images/services/digital-xrays-panoramic-review.jpg',
+      alt: 'Patient reviewing a digital panoramic dental X-ray on a monitor',
+      width: 1536,
+      height: 1536,
+    },
   },
   {
     slug: 'panoramic-xray',

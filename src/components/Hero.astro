@@ -7,23 +7,39 @@ const categories = [
 ---
 
 <section class="bg-neutral-50">
-  <div class="max-w-5xl mx-auto px-4 md:px-8 pt-16 md:pt-24 pb-12 md:pb-16 text-center">
-    <p class="text-sm uppercase tracking-wide text-neutral-600 mb-4">Carmel, Indiana</p>
-    <h1 class="text-neutral-900 mb-6">Beautiful Smiles</h1>
-    <p class="text-lg text-neutral-600 max-w-2xl mx-auto mb-10">
-      We are focused on the needs of patients of all ages and strive to make every visit with us as
-      comfortable and stress-free as possible. With a wide range of treatments and the latest
-      advancements in dental technology, we can show you everything we can do to improve your oral
-      health.
-    </p>
-    <div class="flex items-center justify-center">
-      <a
-        href="/contact-us/"
-        class="inline-flex items-center justify-center px-7 py-3.5 bg-primary text-primary-foreground border border-primary hover:bg-primary-hover-background hover:text-primary-hover-foreground hover:border-primary-hover-border transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-      >
-        Request Appointment
-      </a>
+  <div class="max-w-6xl mx-auto px-4 md:px-8 pt-16 md:pt-24 pb-12 md:pb-16 grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] gap-10 md:gap-12 items-center">
+    <div class="text-center md:text-left">
+      <p class="text-sm uppercase tracking-wide text-neutral-600 mb-4">Carmel, Indiana</p>
+      <h1 class="text-neutral-900 mb-6">Beautiful Smiles</h1>
+      <p class="text-lg text-neutral-600 max-w-2xl mx-auto md:mx-0 mb-10">
+        We are focused on the needs of patients of all ages and strive to make every visit with us as
+        comfortable and stress-free as possible. With a wide range of treatments and the latest
+        advancements in dental technology, we can show you everything we can do to improve your oral
+        health.
+      </p>
+      <div class="flex items-center justify-center md:justify-start">
+        <a
+          href="/contact-us/"
+          class="inline-flex items-center justify-center px-7 py-3.5 bg-primary text-primary-foreground border border-primary hover:bg-primary-hover-background hover:text-primary-hover-foreground hover:border-primary-hover-border transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          Request Appointment
+        </a>
+      </div>
     </div>
+    <picture>
+      <source srcset="/images/office/office-storefront-exterior.avif" type="image/avif" />
+      <source srcset="/images/office/office-storefront-exterior.webp" type="image/webp" />
+      <img
+        src="/images/office/office-storefront-exterior.jpg"
+        alt="Hazel Dell Dentistry storefront, Suzette Nikas, DDS, in Carmel, Indiana"
+        width="680"
+        height="510"
+        loading="eager"
+        fetchpriority="high"
+        decoding="sync"
+        class="w-full aspect-[4/3] object-cover"
+      />
+    </picture>
   </div>
 
   <div class="grid grid-cols-1 sm:grid-cols-3">
